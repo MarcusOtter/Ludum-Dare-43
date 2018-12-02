@@ -14,7 +14,7 @@ MonoBehaviour:
   SettingName: Shoot Delay
   SettingType: 5
   SacrificeDirection: 1
-  _sacrificeDelta: 0.1
-  _maxValue: 2
-  _minValue: 0.1
+  _sacrificeDelta: 0.05
+  _maxValue: 1
+  _minValue: 0.15
   _startingValue: 0.3

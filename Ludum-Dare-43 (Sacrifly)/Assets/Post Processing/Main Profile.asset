@@ -139,8 +139,8 @@ MonoBehaviour:
     overrideState: 0
     value: 1
   centerX:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: -0.1
   centerY:
     overrideState: 0
     value: 0

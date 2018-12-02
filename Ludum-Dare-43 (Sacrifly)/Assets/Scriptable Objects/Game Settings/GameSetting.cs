@@ -22,11 +22,16 @@ public class GameSetting : ScriptableObject
         Value = _startingValue;
     }
 
-    internal void Sacrifice()
+    /// <summary>
+    /// Returns true if the sacrifice was successful and false if the value was not modified.
+    /// </summary>
+    internal bool Sacrifice()
     {
         if (SacrificeDirection == SacrificeDirection.Decrement)
         {
-            if (Value - _sacrificeDelta <= _minValue)
+            if (Mathf.Approximately(Value, _minValue)) { return false; }
+
+            if (Value - _sacrificeDelta < _minValue)
             {
                 Value = _minValue;
             }
@@ -37,7 +42,9 @@ public class GameSetting : ScriptableObject
         }
         else if (SacrificeDirection == SacrificeDirection.Increment)
         {
-            if (Value + _sacrificeDelta >= _maxValue)
+            if (Mathf.Approximately(Value, _maxValue)) { return false; }
+
+            if (Value + _sacrificeDelta > _maxValue)
             {
                 Value = _maxValue;
             }
@@ -48,13 +55,19 @@ public class GameSetting : ScriptableObject
         }
 
         OnValueChanged?.Invoke(this, EventArgs.Empty);
+        return true;
     }
 
-    internal void Unsacrifice()
+    /// <summary>
+    /// Returns true if the unsacrifice was successful and false if the value was not modified.
+    /// </summary>
+    internal bool Unsacrifice()
     {
         if (SacrificeDirection == SacrificeDirection.Decrement)
         {
-            if (Value + _sacrificeDelta >= _maxValue)
+            if (Mathf.Approximately(Value, _maxValue)) { return false; }
+
+            if (Value + _sacrificeDelta > _maxValue)
             {
                 Value = _maxValue;
             }
@@ -65,7 +78,9 @@ public class GameSetting : ScriptableObject
         }
         else if (SacrificeDirection == SacrificeDirection.Increment)
         {
-            if (Value - _sacrificeDelta <= _minValue)
+            if (Mathf.Approximately(Value, _minValue)) { return false; }
+
+            if (Value - _sacrificeDelta < _minValue)
             {
                 Value = _minValue;
             }
@@ -76,6 +91,7 @@ public class GameSetting : ScriptableObject
         }
 
         OnValueChanged?.Invoke(this, EventArgs.Empty);
+        return true;
     }
 
     internal float GetImageFill()

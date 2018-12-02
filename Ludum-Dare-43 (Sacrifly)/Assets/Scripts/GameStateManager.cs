@@ -8,6 +8,7 @@ public class GameStateManager : MonoBehaviour
     private void OnEnable()
     {
         GameSetting.OnValueChanged += HandleChangedSetting;
+        Sacrificer.OnHitpointsChanged += CheckGameOver;
     }
 
     private void HandleChangedSetting(object sender, EventArgs e)
@@ -26,8 +27,21 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+    private void CheckGameOver(object sender, SacrificeDirection hitpointDirection)
+    {
+        if (hitpointDirection == SacrificeDirection.Increment) { return; }
+
+        var hitpoints = ((Sacrificer) sender).HitPoints;
+
+        if (hitpoints <= 0)
+        {
+            print("GAME OVER!");
+        }
+    }
+
     private void OnDisable()
     {
         GameSetting.OnValueChanged -= HandleChangedSetting;
+        Sacrificer.OnHitpointsChanged -= CheckGameOver;
     }
 }

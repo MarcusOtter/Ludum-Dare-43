@@ -8,11 +8,24 @@ public class ShipController : MonoBehaviour
     [SerializeField] private float _turningSpeed = 3;
 
     private Rigidbody2D _rigidbody;
+    internal Sacrificer Sacrificer { get; private set; }
 
     private void OnEnable()
     {
         GameSetting.OnValueChanged += HandleChangedSetting;
     }
+
+    private void Start ()
+	{
+	    _rigidbody = GetComponent<Rigidbody2D>();
+	    Sacrificer = FindObjectOfType<Sacrificer>();
+	}
+
+	private void FixedUpdate ()
+	{
+        transform.Rotate(0, 0, PlayerInput.HorizontalInput * _turningSpeed * -1);
+	    _rigidbody.velocity = transform.up * _movementSpeed;
+	}
 
     private void HandleChangedSetting(object sender, EventArgs e)
     {
@@ -30,16 +43,18 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    private void Start ()
-	{
-	    _rigidbody = GetComponent<Rigidbody2D>();
-	}
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.collider.CompareTag(EnvironmentVariables.BulletTag))
+        {
+            var isEnemyBullet = col.collider.GetComponent<Bullet>().IsEnemyBullet;
 
-	private void FixedUpdate ()
-	{
-        transform.Rotate(0, 0, PlayerInput.HorizontalInput * _turningSpeed * -1);
-	    _rigidbody.velocity = transform.up * _movementSpeed;
-	}
+            if (isEnemyBullet)
+            {
+                Sacrificer.ModifyHitpoints(-1);
+            }
+        }
+    }
 
     private void OnDisable()
     {

@@ -5,7 +5,7 @@ using TMPro;
 
 public class SacrificeUI : MonoBehaviour
 {
-    [Header("Active Setting")]
+    [Header("====================Active Setting====================")]
     [SerializeField] private TextMeshProUGUI _activeSettingText;
     [SerializeField] private TextMeshProUGUI _settingValueText;
     [SerializeField] private Image _settingProgressFill;
@@ -14,7 +14,7 @@ public class SacrificeUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _leftArrow;
     [SerializeField] private TextMeshProUGUI _rightArrow;
 
-    [Header("Other references")]
+    [Header("====================Other references====================")]
     [SerializeField] private Image _screenBrightnessPanel;
 
     private void OnEnable()

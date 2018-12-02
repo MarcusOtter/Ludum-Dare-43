@@ -4,9 +4,11 @@ using UnityEngine;
 public class Sacrificer : MonoBehaviour
 {
     internal static event EventHandler<GameSetting> OnActiveSettingChanged;
+    internal static event EventHandler<SacrificeDirection> OnHitpointsChanged;
+
+    internal int HitPoints { get; private set; } = 10;
 
     private int _activeGameSettingIndex;
-
     private CurrentGameSettings _currentGameSettings;
 
     private void OnEnable()
@@ -16,7 +18,6 @@ public class Sacrificer : MonoBehaviour
         PlayerInput.OnSDown += PreviousGameSetting;
         PlayerInput.OnDDown += Increment;
     }
-
 
     private void Start()
     {
@@ -58,11 +59,13 @@ public class Sacrificer : MonoBehaviour
 
         if (currentSetting.SacrificeDirection == SacrificeDirection.Increment)
         {
-            currentSetting.Unsacrifice();
+            var successful = currentSetting.Unsacrifice();
+            if (successful) { ModifyHitpoints(-1); }
         }
         else if (currentSetting.SacrificeDirection == SacrificeDirection.Decrement)
         {
-            currentSetting.Sacrifice();
+            var successful = currentSetting.Sacrifice();
+            if (successful) { ModifyHitpoints(1); }
         }
     }
 
@@ -72,12 +75,24 @@ public class Sacrificer : MonoBehaviour
 
         if (currentSetting.SacrificeDirection == SacrificeDirection.Increment)
         {
-            currentSetting.Sacrifice();
+            var successful = currentSetting.Sacrifice();
+            if (successful) { ModifyHitpoints(1); }
         }
         else if (currentSetting.SacrificeDirection == SacrificeDirection.Decrement)
         {
-            currentSetting.Unsacrifice();
+            var successful = currentSetting.Unsacrifice();
+            if (successful) { ModifyHitpoints(-1); }
         }
+    }
+
+    internal void ModifyHitpoints(int delta)
+    {
+        if (delta == 0) { return; }
+
+        HitPoints += delta;
+        OnHitpointsChanged?.Invoke(this, delta > 0 
+            ? SacrificeDirection.Increment 
+            : SacrificeDirection.Decrement);
     }
 
     private void OnDisable()
