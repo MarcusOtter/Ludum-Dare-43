@@ -1,0 +1,16 @@
+TODO:
+
+
+
+Sacrifice ideas:
+FPS
+Game speed (lower and higher)
+Turnning speed
+Movement speed
+Shooting speed
+Screen brightness
+UI
+Parts of your screen
+Being able to go left/right
+Camera shake
+Game volume (fun for tutorial)
