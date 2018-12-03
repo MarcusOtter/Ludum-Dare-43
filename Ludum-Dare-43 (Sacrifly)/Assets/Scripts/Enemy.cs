@@ -1,25 +1,25 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _minRotationOffset;
     [SerializeField] private float _maxRotationOffset;
-    [SerializeField] private float _movementSpeed;
+    [SerializeField] protected float _movementSpeed;
 
     private float GetRandomRotationOffset => Random.Range(_minRotationOffset, _maxRotationOffset);
 
-    private Rigidbody2D _rigidbody;
+    protected Rigidbody2D Rigidbody;
 
     private void Awake()
     {
         transform.Rotate(0, 0, GetRandomRotationOffset);
-        _rigidbody = GetComponent<Rigidbody2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Update()
     {
-        _rigidbody.velocity = transform.up * _movementSpeed;
+        Rigidbody.velocity = transform.up * _movementSpeed;
     }
 
     protected virtual void Die(bool killedByPlayer)

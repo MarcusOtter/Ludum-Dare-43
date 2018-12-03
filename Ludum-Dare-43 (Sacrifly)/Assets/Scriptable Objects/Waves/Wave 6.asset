@@ -8,13 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a35693d34ff0def49888bfd86ee1f27d, type: 3}
-  m_Name: Shoot Delay
+  m_Script: {fileID: 11500000, guid: b5f48469256ea42498550a76778fec3a, type: 3}
+  m_Name: Wave 6
   m_EditorClassIdentifier: 
-  SettingName: Shoot Delay
-  SettingType: 5
-  SacrificeDirection: 1
-  StartingValue: 0.3
-  _sacrificeDelta: 0.05
-  _maxValue: 0.6
-  _minValue: 0.15
+  SpawnTime: 48
+  EnemiesToSpawn:
+  - {fileID: 114903848692421144, guid: 6e9ec26d1d54a2747ab909e14906822f, type: 2}
+  MeteorsToSpawn: []
+  IsBossWave: 0

@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject _tutorial;
+
     public void StartGame()
     {
         SceneManager.LoadScene(1);
@@ -11,5 +13,10 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ToggleTutorial()
+    {
+        _tutorial.SetActive(!_tutorial.activeInHierarchy);
     }
 }

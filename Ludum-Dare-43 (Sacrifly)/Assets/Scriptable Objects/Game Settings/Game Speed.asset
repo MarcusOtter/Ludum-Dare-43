@@ -14,7 +14,7 @@ MonoBehaviour:
   SettingName: Game Speed
   SettingType: 2
   SacrificeDirection: 1
+  StartingValue: 1
   _sacrificeDelta: 0.05
   _maxValue: 2
   _minValue: 0.8
-  _startingValue: 1

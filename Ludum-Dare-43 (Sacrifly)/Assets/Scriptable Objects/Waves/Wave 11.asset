@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f48469256ea42498550a76778fec3a, type: 3}
+  m_Name: Wave 11
+  m_EditorClassIdentifier: 
+  SpawnTime: 120
+  EnemiesToSpawn:
+  - {fileID: 114537991753944610, guid: 3ba9ca2df459de446be7e28310b3993e, type: 2}
+  - {fileID: 114903848692421144, guid: 6e9ec26d1d54a2747ab909e14906822f, type: 2}
+  - {fileID: 114128425583068828, guid: 575d205134e61bf43bbd3081854c68f2, type: 2}
+  - {fileID: 114537991753944610, guid: 3ba9ca2df459de446be7e28310b3993e, type: 2}
+  MeteorsToSpawn:
+  - {fileID: 114365170372278236, guid: 654d64ccb2e4e2d4c91fbfa2b98bc6ed, type: 2}
+  - {fileID: 114504044449391856, guid: 7c11a1024a66744489b810576bba04f9, type: 2}
+  - {fileID: 114579546443605512, guid: 390639efb97e03843b56a483ad0ef07e, type: 2}
+  IsBossWave: 0

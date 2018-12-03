@@ -14,7 +14,7 @@ MonoBehaviour:
   SettingName: Movement Speed
   SettingType: 4
   SacrificeDirection: 0
+  StartingValue: 2
   _sacrificeDelta: 0.25
   _maxValue: 2.5
   _minValue: 0.25
-  _startingValue: 2

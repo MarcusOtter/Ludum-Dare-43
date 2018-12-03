@@ -54,6 +54,11 @@ public class ShipController : MonoBehaviour
                 Sacrificer.ModifyHitpoints(-1);
             }
         }
+        else if (col.collider.CompareTag(EnvironmentVariables.EnemyTag))
+        {
+            Sacrificer.ModifyHitpoints(-1);
+            Destroy(col.gameObject);
+        }
     }
 
     private void OnDisable()

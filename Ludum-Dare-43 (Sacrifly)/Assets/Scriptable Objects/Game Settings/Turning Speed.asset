@@ -14,7 +14,7 @@ MonoBehaviour:
   SettingName: Turning Speed
   SettingType: 3
   SacrificeDirection: 0
+  StartingValue: 2.5
   _sacrificeDelta: 0.25
   _maxValue: 5
   _minValue: 1
-  _startingValue: 2.5

@@ -14,7 +14,7 @@ MonoBehaviour:
   SettingName: Target FPS
   SettingType: 0
   SacrificeDirection: 0
+  StartingValue: 60
   _sacrificeDelta: 5
   _maxValue: 60
   _minValue: 5
-  _startingValue: 60

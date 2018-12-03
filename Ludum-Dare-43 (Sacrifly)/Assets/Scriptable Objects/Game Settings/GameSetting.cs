@@ -9,17 +9,17 @@ public class GameSetting : ScriptableObject
     [SerializeField] internal string SettingName;
     [SerializeField] internal GameSettingType SettingType;
     [SerializeField] internal SacrificeDirection SacrificeDirection;
+    [SerializeField] internal float StartingValue;
 
     internal float Value { get; private set; }
 
     [SerializeField] private float _sacrificeDelta;
     [SerializeField] private float _maxValue;
     [SerializeField] private float _minValue;
-    [SerializeField] private float _startingValue;
 
     private void OnEnable()
     {
-        Value = _startingValue;
+        Value = StartingValue;
     }
 
     /// <summary>
@@ -92,6 +92,11 @@ public class GameSetting : ScriptableObject
 
         OnValueChanged?.Invoke(this, EventArgs.Empty);
         return true;
+    }
+
+    internal void SetValue(float newValue)
+    {
+        Value = newValue;
     }
 
     internal float GetImageFill()

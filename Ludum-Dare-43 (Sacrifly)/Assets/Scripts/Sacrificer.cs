@@ -17,6 +17,8 @@ public class Sacrificer : MonoBehaviour
         PlayerInput.OnADown += Decrement;
         PlayerInput.OnSDown += PreviousGameSetting;
         PlayerInput.OnDDown += Increment;
+
+        HitPoints = 10;
     }
 
     private void Start()
@@ -97,9 +99,9 @@ public class Sacrificer : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerInput.OnWDown -= Increment;
-        PlayerInput.OnADown -= NextGameSetting;
-        PlayerInput.OnSDown -= Decrement;
-        PlayerInput.OnDDown -= NextGameSetting;
+        PlayerInput.OnWDown -= NextGameSetting;
+        PlayerInput.OnADown -= Decrement;
+        PlayerInput.OnSDown -= PreviousGameSetting;
+        PlayerInput.OnDDown -= Increment;
     }
 }

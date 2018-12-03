@@ -11,9 +11,9 @@ public class Stats : MonoBehaviour
     private float _startTime;
 
     internal static float ElapsedTime;
-    internal static float KillCount;
-    internal static float WaveCount;
-    internal static float LoopCount;
+    internal static int KillCount;
+    internal static int WaveCount;
+    internal static int LoopCount;
 
     private void Awake()
     {

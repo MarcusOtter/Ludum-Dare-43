@@ -1,9 +1,20 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameStateManager : MonoBehaviour
 {
     [SerializeField] internal CurrentGameSettings CurrentGameSettings;
+
+    private void Awake()
+    {
+        foreach (var setting in CurrentGameSettings.GameSettings)
+        {
+            setting.SetValue(setting.StartingValue);
+        }
+
+        QualitySettings.vSyncCount = 0;
+    }
 
     private void OnEnable()
     {
@@ -35,7 +46,7 @@ public class GameStateManager : MonoBehaviour
 
         if (hitpoints <= 0)
         {
-            print("GAME OVER!");
+            SceneManager.LoadScene(2);
         }
     }
 
